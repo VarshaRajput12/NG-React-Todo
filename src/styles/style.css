@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.header{
+    background-color: #ffc412;
+    padding: 1rem 2rem;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.footer{
+    background-color: #202529;
+    padding: 1rem 2rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    padding: 0.8rem;
+    cursor: pointer;
+}
+.add{
+    background-color: #048b56;
+    color: #fff;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+}
+
+.edit{
+    background-color: #fed467;
+}
+
+.remove{
+    background-color: #b4163b;
+    color: #fff;
+     border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+}
+
+.Body{
+    width: 100%;
+    height: 100vh;
+    margin-top: 2rem;
+    z-index: 10;
+    background-color: #d6b551;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 3rem;
+}
+
+.fruit{
+    width: 20rem;
+}
+
+/* new todo list box modal */
+.h2-cross{
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 2rem;
+ border-bottom: 1px solid rgb(105, 102, 102);
+}
+
+.innerBox input{
+    margin: 1rem 0;
+    width: 92%;
+    padding: 0.6rem 1rem;
+    border: none;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    outline: none;
+    border-radius: 0.4rem;
+}
+
+.btn{
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+cursor: pointer;
+}
+
+.createBtn{
+    width: 100%;
+    background-color: #ffc412;
+}
+
+.closeBtn{
+ background-color: gray;
+ color: #fff;
+ float: right;
+ margin-top: 2rem;
+}
+
+/* cards */
+
+
+.single-card{
+    padding: 2rem;
+    width: 20rem;
+    background-color: #b4163b;
+    margin: 2rem;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
