@@ -49,8 +49,6 @@
     width: 100%;
     height: 100vh;
     margin-top: 2rem;
-    z-index: 10;
-    background-color: #d6b551;
 }
 
 .container{
