@@ -116,10 +116,10 @@ function Body() {
         // style={{ color: "black", display: "flex", gap: "2rem" }}
         className="data"
       >
-        {todoList.map((fruit) => {
+        {todoList.map((todo) => {
           return (
             <>
-              <Cards fruit={fruit} />
+              <Cards todo={todo} todolis={todoList} setTodoList={setTodoList}/>
             </>
           );
         })}

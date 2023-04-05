@@ -60,7 +60,6 @@ const SubTaskModal = ({ addBtn, editBtn, removeBtn }) => {
             <button
               className="createBtn btn"
               onClick={() => {
-                // handleFruit();
                 handleClose();
               }}
             >
