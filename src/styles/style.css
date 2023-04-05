@@ -54,7 +54,7 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   gap: 2rem;
   flex-wrap: wrap;
   padding: 3rem;
@@ -82,7 +82,7 @@
   padding: 0.6rem 1rem;
   border: none;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
-    rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+ rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
   outline: none;
   border-radius: 0.4rem;
 }
@@ -111,9 +111,8 @@
 
 .single-card {
   padding: 2rem;
-  width: 20rem;
-  /* background-color: #e7ecf0; */
   margin: 2rem;
+
 }
 .title {
   display: flex;
@@ -124,23 +123,28 @@
 }
 
 .checkbox {
-  border-right: 1px solid gray;
   padding: 0.4rem 0.6rem 0.4rem 1.2rem;
 }
 .slider {
-  border-left: 1px solid gray;
   padding: 0.4rem;
 }
 
+
 .btns{
     display: flex;
-   justify-content: center;
-   align-items: center;
+    justify-content: center;
+    align-items: center;
     background-color: #e7ecf0;
     margin-top: 2rem;
 }
 
 .subtask{
-    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99.5%;
     background-color: #fff;
+    margin: 0.5rem 0;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }

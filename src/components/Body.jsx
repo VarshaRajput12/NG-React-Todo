@@ -27,12 +27,16 @@ const style = {
 
 function Body() {
   const [todoList, setTodoList] = useState([]);
+  const [currCheckedList, setCurrCheckedList] = useState(null);
   const [item, setItem] = useState({
     title: "",
     id: Math.floor(Math.random() * 1000),
     subTask: [],
     delete: false,
+    checked: false,
   });
+  console.log(currCheckedList)
+  console.log(todoList)
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -45,6 +49,39 @@ function Body() {
     }
     setTodoList([...todoList, item]);
     setItem("");
+  };
+
+  const updateCurrCheckedList = (id, boolean) => {
+    const updatedList = todoList.map((list) => {
+      if (list.id === id) {
+        if (list.checked === false) {
+          setCurrCheckedList(list);
+        }else{
+          setCurrCheckedList(null)
+        }
+        return {
+          ...list,
+          checked: boolean,
+        };
+      }
+      return {
+        ...list,
+        checked: false,
+
+      };
+    });
+    setTodoList(updatedList)
+  };
+
+  const updateListById = (id, object) => {
+    const updatedList = todoList.map((list) => {
+      if (list.id === id) {
+        setCurrCheckedList({ ...list, ...object });
+        return { ...list, ...object };
+      }
+      return list;
+    });
+    setTodoList(updatedList);
   };
 
   const handleDelete = (id) => {
@@ -119,7 +156,15 @@ function Body() {
         {todoList.map((todo) => {
           return (
             <>
-              <Cards todo={todo} todolis={todoList} setTodoList={setTodoList}/>
+              <Cards
+                key={todo.id}
+                todo={todo}
+                todolist={todoList}
+                setTodoList={setTodoList}
+                updateCurrCheckedList={updateCurrCheckedList}
+                updateListById={updateListById}
+                currCheckedList={currCheckedList}
+              />
             </>
           );
         })}

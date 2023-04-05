@@ -24,9 +24,9 @@ const style = {
   p: 4,
 };
 
-const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
+const Cards = ({ todo, addBtn, editBtn, removeBtn, updateCurrCheckedList }) => {
   // const [shouldDelete, setShouldDelete] = useState(false);
-  const [subtaskList, setSubTaskList] = useState(todo.subTask);
+  const [subtaskList, setSubTaskList] = useState(todo.subTask ?? []);
   const [subTaskItem, setSubTaskItem] = useState({
     title: "",
     id: Math.floor(Math.random() * 1000),
@@ -35,8 +35,6 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(subtaskList, "");
-  console.log(todo.subTask, "subtask");
 
   const hadlesubTaskItem = (e) =>
     setSubTaskItem({ ...hadlesubTaskItem, title: e.target.value });
@@ -45,6 +43,12 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
     setSubTaskList([...subtaskList, subTaskItem]);
     setSubTaskItem("");
   };
+
+  const handleCheckboxChange = () =>{
+    updateCurrCheckedList(todo.id, !todo.checked);
+  }
+
+  console.log(subtaskList);
   return (
     <div>
       <div>
@@ -59,7 +63,7 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box sx={style} key={subTaskItem.id}>
             <div className="h2-cross">
               <h2>Add todo item</h2>
               <CloseIcon
@@ -114,9 +118,10 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
       >
         <Card sx={{ display: "flex", flexDirection: "column" }}>
           <div className="title">
-            <FormControlLabel
-              control={<Checkbox defaultUnChecked />}
-              className="checkbox"
+            <Checkbox
+              checked={todo.checked}
+              onChange={handleCheckboxChange}
+              inputProps={{ "aria-label": "controlled" }}
             />
             <h4>{todo.title}</h4>
             <FormControlLabel
@@ -130,24 +135,23 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, todoList, setTodoList }) => {
           <br />
           <br />
 
-          {subtaskList
-            ? subtaskList.map((task) => (
-                <div className="title">
-                  <FormControlLabel
-                    control={<Checkbox defaultUnChecked />}
-                    className="checkbox"
-                  />
-                  <p className="subtask">{task.title}</p>
-                  <FormControlLabel
-                    className="slider"
-                    control={
-                      <Switch checked={false} name="loading" color="primary" />
-                    }
-                  />
-                </div>
-              ))
-            : ""}
-      
+          {subtaskList &&
+            subtaskList.map((task) => (
+              <div className="subtask">
+                <FormControlLabel
+                  control={<Checkbox defaultUnChecked />}
+                  className="checkbox"
+                />
+                <p className="">{task.title}</p>
+                <FormControlLabel
+                  className="slider"
+                  control={
+                    <Switch checked={false} name="loading" color="primary" />
+                  }
+                />
+              </div>
+            ))}
+
           {/* <SubTaskModal
             addBtn={<AddBoxIcon className="add icon" />}
             editBtn={<BorderColorIcon className="edit icon" />}
