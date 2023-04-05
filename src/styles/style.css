@@ -115,7 +115,15 @@ cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 22vw;
+    background-color: #e7ecf0;
 }
 
-
+.checkbox{
+    border-right: 1px solid gray;
+    padding: 0.4rem 0.6rem 0.4rem 1.2rem;
+}
+.slider{
+    border-left: 1px solid gray;
+    padding: 0.4rem;
+}

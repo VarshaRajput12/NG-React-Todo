@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CloseIcon from "@mui/icons-material/Close";
 import Footer from "./Footer";
-import { Card } from "@mui/material";
 import Cards from "./Cards";
 
 const style = {
@@ -21,14 +16,14 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+// const bull = (
+//   <Box
+//     component="span"
+//     sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+//   >
+//     •
+//   </Box>
+// );
 
 function Body() {
   const [todoList, setTodoList] = useState([]);
@@ -44,7 +39,7 @@ function Body() {
   const handleClose = () => setOpen(false);
 
   const handleItem = (e) => setItem({ ...item, title: e.target.value });
-  const handleFruit = () => {
+  const handleAddList = () => {
     if (!item.title === "") {
       alert("fill the empty fields");
     }
@@ -96,7 +91,7 @@ function Body() {
               <button
                 className="createBtn btn"
                 onClick={() => {
-                  handleFruit();
+                  handleAddList();
                   handleClose();
                 }}
               >
