@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
 import Footer from "./Footer";
 import Cards from "./Cards";
+import BasicModal from "./UpadateTodoList";
 
 const style = {
   position: "absolute",
@@ -35,8 +36,8 @@ function Body() {
     delete: false,
     checked: false,
   });
-  console.log(currCheckedList)
-  console.log(todoList)
+  console.log(currCheckedList);
+  console.log(todoList);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,8 +45,9 @@ function Body() {
 
   const handleItem = (e) => setItem({ ...item, title: e.target.value });
   const handleAddList = () => {
-    if (!item.title === "") {
+    if (!item.title === '') {
       alert("fill the empty fields");
+      return;
     }
     setTodoList([...todoList, item]);
     setItem("");
@@ -56,8 +58,8 @@ function Body() {
       if (list.id === id) {
         if (list.checked === false) {
           setCurrCheckedList(list);
-        }else{
-          setCurrCheckedList(null)
+        } else {
+          setCurrCheckedList(null);
         }
         return {
           ...list,
@@ -67,10 +69,9 @@ function Body() {
       return {
         ...list,
         checked: false,
-
       };
     });
-    setTodoList(updatedList)
+    setTodoList(updatedList);
   };
 
   const updateListById = (id, object) => {
@@ -83,14 +84,22 @@ function Body() {
     });
     setTodoList(updatedList);
   };
-
-  const handleDelete = (id) => {
-    const newtodoList = todoList.filter((ele, index) => {
-      return id !== index;
-    });
-    setTodoList(newtodoList);
+  
+  const handleListDelete = () => {
+    if (!currCheckedList) {
+      alert("No list checked");
+      return;
+    } else {
+      debugger
+      deleteListById(currCheckedList.id);
+      alert("Deleted a list");
+    }
   };
+  const deleteListById = (id) => {
+    const updatedList = todoList.filter((list) => list.id !== id);
 
+    setTodoList(updatedList);
+  };
   return (
     <div className="Body">
       <div className="container">
@@ -162,14 +171,16 @@ function Body() {
                 todolist={todoList}
                 setTodoList={setTodoList}
                 updateCurrCheckedList={updateCurrCheckedList}
-                updateListById={updateListById}
-                currCheckedList={currCheckedList}
               />
             </>
           );
         })}
       </div>
-      <Footer handleOpen={handleOpen} />
+      <BasicModal
+        updateListById={updateListById}
+        currCheckedList={currCheckedList}
+      />
+      <Footer handleOpen={handleOpen} handleListDelete={handleListDelete} />
     </div>
   );
 }

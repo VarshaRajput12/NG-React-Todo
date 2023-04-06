@@ -112,7 +112,6 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, updateCurrCheckedList }) => {
         </Modal>
       </div>
       <div
-        // key={index}
         className="single-card"
         style={{ display: "flex", gap: "2rem", alignItems: "center" }}
       >
@@ -131,7 +130,6 @@ const Cards = ({ todo, addBtn, editBtn, removeBtn, updateCurrCheckedList }) => {
               }
             />
           </div>
-          {/* //------------------------------------ */}
           <br />
           <br />
 
